@@ -10,7 +10,7 @@ This example demonstrates how to use the Treasure Data REST API to send data fro
 
 ## Hardware 
 1. Connect the GPS module with serial TX connected to D1 and RX to D0
-   - If you need to connect to a different set of pins, you'll need to use [this constructor](https://github.com/sarahmarshy/vert-td-gps/blob/master/main.cpp#L25) to set them.
+   - If you need to connect to a different set of pins, you'll need to use [this constructor](https://github.com/ARMmbed/pp-td-gps/blob/master/main.cpp#L25) to set them.
 1. Plug in the ethernet cable to the board
 
 ## How to use

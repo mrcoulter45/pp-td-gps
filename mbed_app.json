@@ -1,0 +1,13 @@
+{
+    "config": {
+        "api-key":{
+            "help":  "REST API Key for Treasure Data",
+            "value": "\"YOUR API KEY HERE\""
+        }
+    },
+    "target_overrides": {
+        "*": {
+            "platform.stdio-convert-newlines": true
+        }
+    }
+}

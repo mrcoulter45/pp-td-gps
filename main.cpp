@@ -29,9 +29,9 @@ int main(void){
 
     int count = 0;
 
-    printf("\r\nTreasure Data REST API Demo\n");
+    printf("\r\nTreasure Data REST API  + GPS Demo\n");
 
-    // Connect to Wifi
+    // Connect to Ethernet
     printf("\nConnecting to ethernet...\n");
     int ret = net.connect();
     if (ret != 0) {
@@ -46,21 +46,18 @@ int main(void){
     // Create Treasure data objects (Network, Database, Table, APIKey)
     TreasureData_RESTAPI* gps_td  = new TreasureData_RESTAPI(&net,"gps_test","GPS", MBED_CONF_APP_API_KEY);
 
-
-    // Buffers to create strings in
-
     // Start reading GPS data
     gps.start();
-
-    char gps_buff  [BUFF_SIZE] = {0};
     
-    // Get device health data, send to Treasure Data every 10 seconds
+    // Get GPS data, send to Treasure Data every 10 seconds
     while(1){
         char lat_buff  [16] = {0};
         char long_buff [16] = {0};
+        // Query GPS module
         gps.getLatitude(lat_buff); 
         gps.getLongitude(long_buff); 
 
+        char gps_buff  [BUFF_SIZE] = {0};
         int x = sprintf(gps_buff,"{\"lat\":\"%s\",\"long\":\"%s\"}", lat_buff, long_buff);
         gps_buff[x] = 0;
 

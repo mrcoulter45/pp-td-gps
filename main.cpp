@@ -44,30 +44,30 @@ int main(void){
     printf("IP: %s\n", net.get_ip_address());
 
     // Create Treasure data objects (Network, Database, Table, APIKey)
-    TreasureData_RESTAPI* latitude  = new TreasureData_RESTAPI(&net,"iot_test","latitude", MBED_CONF_APP_API_KEY);
-    TreasureData_RESTAPI* longitude   = new TreasureData_RESTAPI(&net,"iot_test","longitude",  MBED_CONF_APP_API_KEY);
+    TreasureData_RESTAPI* gps_td  = new TreasureData_RESTAPI(&net,"gps_test","GPS", MBED_CONF_APP_API_KEY);
 
 
     // Buffers to create strings in
-    char lat_buff  [BUFF_SIZE] = {0};
-    char long_buff [BUFF_SIZE] = {0};
 
     // Start reading GPS data
     gps.start();
+
+    char gps_buff  [BUFF_SIZE] = {0};
     
     // Get device health data, send to Treasure Data every 10 seconds
     while(1){
+        char lat_buff  [16] = {0};
+        char long_buff [16] = {0};
         gps.getLatitude(lat_buff); 
-
-        // Send data to Treasure data
-        printf("\r\n Sending latitude Data: '%s'\r\n",lat_buff);
-        latitude->sendData(lat_buff,strlen(lat_buff));
-
         gps.getLongitude(long_buff); 
 
+        int x = sprintf(gps_buff,"{\"lat\":\"%s\",\"long\":\"%s\"}", lat_buff, long_buff);
+        gps_buff[x] = 0;
+
         // Send data to Treasure data
-        printf("\r\n Sending longitude Data: '%s'\r\n",long_buff);
-        longitude->sendData(long_buff,strlen(long_buff));
+        printf("\r\n Sending GPS Data: '%s'\r\n",gps_buff);
+        gps_td->sendData(gps_buff,strlen(gps_buff));
+
         wait(10);
 
     }

@@ -22,7 +22,7 @@
  
 #define BUFF_SIZE   200
 
-GroveGPS gps;
+GroveGPS gps(D1, D0);
 EthernetInterface net;
 
 int main(void){

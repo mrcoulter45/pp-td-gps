@@ -2,7 +2,7 @@
     "config": {
         "api-key":{
             "help":  "REST API Key for Treasure Data",
-            "value": "\"YOUR API KEY HERE\""
+            "value": "\"9722/9423c60ae88d0a49f8933eee27d648fcc2826c81\""
         }
     },
     "target_overrides": {

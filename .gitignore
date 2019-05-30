@@ -1,0 +1,9 @@
+.link_script.sct
+GettingStarted.html
+GroveGPS/
+mbed-os-treasuredata-rest/
+mbed-os/
+mbed_config.h
+*.uvguix.*
+*.uvoptx
+*.uvprojx

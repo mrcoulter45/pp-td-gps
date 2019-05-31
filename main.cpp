@@ -44,7 +44,7 @@ int main(void){
     printf("IP: %s\n", net.get_ip_address());
 
     // Create Treasure data objects (Network, Database, Table, APIKey)
-    TreasureData_RESTAPI* gps_td  = new TreasureData_RESTAPI(&net,"gps_test_michael","GPS", MBED_CONF_APP_API_KEY);
+    // TreasureData_RESTAPI* gps_td  = new TreasureData_RESTAPI(&net,"gps_test_michael","GPS", MBED_CONF_APP_API_KEY);
 
     // Start reading GPS data
     gps.start();
@@ -63,9 +63,9 @@ int main(void){
 
         // Send data to Treasure data
         printf("\r\n Sending GPS Data: '%s'\r\n",gps_buff);
-        gps_td->sendData(gps_buff,strlen(gps_buff));
+        // gps_td->sendData(gps_buff,strlen(gps_buff));
 
-        wait(10);
+        wait(3);
 
     }
 
